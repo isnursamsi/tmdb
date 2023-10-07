@@ -1,0 +1,26 @@
+<div class="wrapper-login row mx-0 flex-column align-items-center justify-content-center h-100">
+    <div class="col-sm-6 col-lg-3 col-10">
+        <div class="card shadow-lg p-4 rounded border-0">
+            <h2 class="text-black mb-5 mx-2 text-center">
+                The Movie Database (TMDb)
+            </h2>
+            <form (submit)="login($event)">
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" [formControl]="username">
+                  <div *ngIf="username.errors?.['required'] && username.touched" class="text-danger">
+                    *username is required.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" [formControl]="password" autocomplete="on">
+                  <div *ngIf="password.errors?.['required'] && password.touched" class="text-danger">
+                    *password is required.
+                  </div>
+                </div>
+                <button type="submit" [ngClass]="username.errors !== null || password.errors !== null ? 'btn btn-secondary' : 'btn btn-danger'" [disabled]="username.errors !== null || password.errors !== null">Log In</button>
+            </form>
+        </div>
+    </div>
+</div>
